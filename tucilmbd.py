@@ -1,11 +1,11 @@
 import psycopg2
-ip_address = "52.163.231.91" # ganti dengan address masing-masing
+host = "SG-tucilmbd-1357-pgsql-master.servers.mongodirector.com" # ganti dengan host masing-masing
 matkul = "mbd"
 point = 0
 
 # Modul 1
 def test1():
-	db = psycopg2.connect(dbname=matkul, host=ip_address, user="mahasiswa", password=matkul)
+	db = psycopg2.connect(dbname=matkul, host=host, user="mahasiswa", password=matkul)
 	cursor = db.cursor()
 	try:
 		cursor.execute('SELECT * FROM penilaian')
@@ -17,7 +17,7 @@ def test1():
 
 # Modul 2
 def test2():
-	db = psycopg2.connect(dbname=matkul, host=ip_address, user="dosen", password=matkul)
+	db = psycopg2.connect(dbname=matkul, host=host, user="dosen", password=matkul)
 	cursor = db.cursor()
 	cursor.execute("SELECT * FROM information_schema.role_table_grants WHERE table_name='penilaian'")
 	for data in cursor.fetchall():
